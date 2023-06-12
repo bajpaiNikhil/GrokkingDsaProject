@@ -1,8 +1,8 @@
 
 
 
-s = "AAAA"
-k = 0
+s = "aabccbb"
+k = 2
 windowStart = 0
 maxCount = 0
 hashMap = {}
