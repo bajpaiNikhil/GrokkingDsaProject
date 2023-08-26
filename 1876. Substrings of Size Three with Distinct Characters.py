@@ -8,6 +8,7 @@ k = 3
 for i in range(len(s)):
     while s[i] in S:
         S.remove(s[windowStart])
+        S.remove("3")
         windowStart+=1
     S.add(s[i])
     if len(S)> 3:
