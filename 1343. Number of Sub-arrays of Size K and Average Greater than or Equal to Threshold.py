@@ -1,24 +1,21 @@
 
-
-arr = [11,13,17,23,29,31,7,5,2,3]
+arr = [2,2,2,2,5,5,5,8]
 k = 3
-threshold = 5
-
-windowStart = 0
+threshold = 4
+i= 0
+j = 0
 windowTh = 0
 count = 0
-for windowEnd in range(len(arr)):
-    windowTh+=arr[windowEnd]
-    if windowEnd >= k-1:
-        if(windowTh//k)>=threshold:
-            # print("b",windowEnd,windowStart,windowTh,arr[windowStart:windowEnd])
 
+while j<len(arr):
+    windowTh +=arr[j]
+    if j-i+1<k:
+        j+=1
+    elif j-i+1==k:
+        th = windowTh//k
+        if th >=threshold:
             count+=1
-            windowTh -= arr[windowStart]
-            windowStart+=1
-            # print("a",windowEnd,windowStart,windowTh,arr[windowStart:windowEnd])
-        else:
-            windowTh -= arr[windowStart]
-            windowStart+=1
-
+        windowTh-=arr[i]
+        i+=1
+        j+=1
 print(count)
