@@ -3,6 +3,7 @@ queries = [1, 3, 2, 4]
 x = 1
 listDict = {}
 res = []
+
 for i in range(len(nums)):
     if nums[i] not in listDict:
         listDict[nums[i]] = []
