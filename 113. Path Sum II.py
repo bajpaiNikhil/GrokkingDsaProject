@@ -5,25 +5,43 @@ class TreeNode:
         self.right = right
 
 
-def pathWithSumFromRootToLeaf(treeNode):
-    paths= []
-    def helper(node, targetIs, currentSum,pathIs):
+# def pathWithSumFromRootToLeaf(treeNode):
+#     paths = []
+#
+#     def helper(node, targetIs, currentSum, pathIs):
+#
+#         if node is None:
+#             return False
+#         pathIs.append(node.val)
+#         currentSum += node.val
+#         if node.left is None and node.right is None:
+#
+#             print(currentSum)
+#             if currentSum == targetIs:
+#                 paths.append(pathIs[:])
+#
+#         helper(node.left, targetIs, currentSum, pathIs[:])
+#         helper(node.right, targetIs, currentSum, pathIs[:])
+#
+#     target = 18
+#     helper(treeNode, target, 0, [])
+#     return paths
 
+
+def findAllPath(root,sumIs):
+    paths = []
+
+    def helper(node, sum, currentList, paths):
         if node is None:
-            return False
-        pathIs.append(node.val)
-        currentSum += node.val
-        if node.left is None and node.right is None:
-
-            print(currentSum)
-            if currentSum == targetIs:
-                paths.append(pathIs[:])
-
-        l = helper(node.left, targetIs, currentSum,pathIs[:])
-        r = helper(node.right, targetIs, currentSum,pathIs[:])
-
-    target = 18
-    helper(treeNode, target, 0,[])
+            return
+        currentList.append(node.val)
+        if node.val == sum and node.left is None and node.right is None:
+            paths.append(list(currentList))
+        else:
+            helper(node.left, sum - node.val, currentList, paths)
+            helper(node.right, sum - node.val, currentList, paths)
+        del currentList[-1]
+    helper(root, sumIs , [], paths)
     return paths
 
 
@@ -33,4 +51,4 @@ treeNode.right = TreeNode(0)
 treeNode.left.left = TreeNode(5)
 treeNode.left.right = TreeNode(1)
 
-print(pathWithSumFromRootToLeaf(treeNode))
+print(findAllPath(treeNode,18))
