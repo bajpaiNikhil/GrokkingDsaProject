@@ -1,4 +1,3 @@
-import queue
 from collections import deque
 
 
@@ -9,23 +8,24 @@ class TreeNode:
         self.right = right
 
 
-def levelOrderTraversal(root):
+def averageOfLevels(root):
+    if root is None:
+        return []
     q = deque([root])
-    # q.append([root])
-    l = []
+    result = []
     while q:
         levelIs = len(q)
-        print(levelIs)
-        levelValue = []
+        averageAtLevel = []
+
         for i in range(levelIs):
             temp = q.popleft()
-            levelValue.append(temp.val)
+            averageAtLevel.append(temp.val)
             if temp.left:
                 q.append(temp.left)
             if temp.right:
                 q.append(temp.right)
-        l.append(levelValue)
-    return l
+        result.append(sum(averageAtLevel) / len(averageAtLevel))
+    return result
 
 
 treeNode = TreeNode(3)
@@ -33,5 +33,4 @@ treeNode.left = TreeNode(9)
 treeNode.right = TreeNode(20)
 treeNode.right.left = TreeNode(15)
 treeNode.right.right = TreeNode(7)
-
-print(levelOrderTraversal(treeNode))
+print(averageOfLevels(treeNode))

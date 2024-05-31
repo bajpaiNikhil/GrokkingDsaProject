@@ -1,31 +1,31 @@
-import queue
 from collections import deque
 
 
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
+    def __init__(self, val=0, left=None, right=None, next=None):
         self.val = val
         self.left = left
         self.right = right
+        self.next = next
 
-
-def levelOrderTraversal(root):
+def connect(root):
+    if root is None:
+        return []
     q = deque([root])
-    # q.append([root])
-    l = []
-    while q:
+    while q :
+        previousNode = None
+        temp = q.popleft()
         levelIs = len(q)
-        print(levelIs)
-        levelValue = []
         for i in range(levelIs):
             temp = q.popleft()
-            levelValue.append(temp.val)
-            if temp.left:
+            if previousNode:
+                previousNode.next = temp
+            previousNode = temp
+            if temp.left :
                 q.append(temp.left)
             if temp.right:
                 q.append(temp.right)
-        l.append(levelValue)
-    return l
+
 
 
 treeNode = TreeNode(3)
@@ -33,5 +33,3 @@ treeNode.left = TreeNode(9)
 treeNode.right = TreeNode(20)
 treeNode.right.left = TreeNode(15)
 treeNode.right.right = TreeNode(7)
-
-print(levelOrderTraversal(treeNode))
