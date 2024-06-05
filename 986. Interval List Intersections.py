@@ -1,5 +1,5 @@
-firstList = [[1, 10]]
-secondList = [[3, 7]]
+firstList = [[1.10]]
+secondList = [[5,7],[1,3],[9,10]]
 # [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
 i, j, start, end = 0, 0, 0, 1
 result = []
