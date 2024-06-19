@@ -1,22 +1,36 @@
 import heapq
 
-nums = [1,1,1,2,2,3]
+nums = [1, 1, 1, 2, 2, 3]
 
 k = 2
 freqHash = {}
 minHeap = []
+res = []
 for i in nums:
-    freqHash[i] = freqHash.get(i,0)+1
+    freqHash[i] = freqHash.get(i, 0) + 1
 print(freqHash)
 for key, val in freqHash.items():
-    heapq.heappush(minHeap,(val,key))
+    heapq.heappush(minHeap, (val, key))
     if len(minHeap) > k:
         heapq.heappop(minHeap)
-
-res = []
+print(minHeap)
 while minHeap:
     res.append(heapq.heappop(minHeap)[1])
 print(res)
+# freqHash = {}
+# minHeap = []
+# for i in nums:
+#     freqHash[i] = freqHash.get(i,0)+1
+# print(freqHash)
+# for key, val in freqHash.items():
+#     heapq.heappush(minHeap,(val,key))
+#     if len(minHeap) > k:
+#         heapq.heappop(minHeap)
+#
+# res = []
+# while minHeap:
+#     res.append(heapq.heappop(minHeap)[1])
+# print(res)
 
 
 # dic = {}

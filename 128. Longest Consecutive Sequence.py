@@ -1,15 +1,10 @@
-nums = [0, -3, 5, -1, 7, -2, -4, 1, 3]
-
+nums =  [0,3,7,2,5,8,4,6,0,1]
 hashSet = set(nums)
-print(hashSet)
-ans = 0
-for i in range(len(nums)):
-    if nums[i]-1 not in hashSet:
-        chainLength=1
-        x = nums[i]+1
-        while x in hashSet:
-            chainLength+=1
-            x+=1
-        # print(hashSet)
-        ans=max(ans,chainLength)
-print(ans)
+longest = 0
+for i in nums:
+    if i-1 not in hashSet:
+        length = 0
+        while i + length in hashSet:
+            length+=1
+        longest = max(longest,length)
+print(longest)

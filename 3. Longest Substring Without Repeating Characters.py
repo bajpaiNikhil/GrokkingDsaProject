@@ -1,15 +1,26 @@
-s = "aabcabcbb"
+s = "abcabcbb"
 
-windowStart = 0
+windowStart =0
 windowSize = 0
-maxSize = 0
-subStringHashMap = {}
+maxSize =0
+hashMap = {}
 for i in range(len(s)):
-    if s[i] in subStringHashMap:
-        windowStart = max(windowStart, subStringHashMap[s[i]] + 1)
-    subStringHashMap[s[i]] = i
-    maxSize = max(maxSize, i - windowStart + 1)
-print(subStringHashMap, maxSize)
+    if s[i] in hashMap:
+        windowStart = max(windowStart , hashMap[s[i]]+1)
+    hashMap[s[i]] = i
+    maxSize = max(maxSize,i-windowStart+1)
+print(maxSize)
+
+# windowStart = 0
+# windowSize = 0
+# maxSize = 0
+# subStringHashMap = {}
+# for i in range(len(s)):
+#     if s[i] in subStringHashMap:
+#         windowStart = max(windowStart, subStringHashMap[s[i]] + 1)
+#     subStringHashMap[s[i]] = i
+#     maxSize = max(maxSize, i - windowStart + 1)
+# print(subStringHashMap, maxSize)
 
 #
 # sets = set()
