@@ -16,6 +16,7 @@ def perfectSquare(n):
             minSquare= min(minSquare,numsSquare)
         memo[n] = minSquare
         return minSquare
+
     return helper(n,{})
 
 

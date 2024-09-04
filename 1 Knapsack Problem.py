@@ -24,6 +24,6 @@ def find_knapsack(capacity, weights, values, n):
 
 
 weight = [1, 2, 3, 5]
-value = [10, 5, 4, 8]
+value = [5, 4, 8, 6]
 capacity = 5
 print(find_knapsack(capacity,weight, value, len(weight)))
