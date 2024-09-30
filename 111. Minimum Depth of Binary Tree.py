@@ -7,26 +7,43 @@ class TreeNode:
         self.left = left
         self.right = right
 
-
 def depthOfTree(root):
     if root is None:
         return []
-    minimumDepthIs = 0
-    q = deque([root])
-    while q:
-        minimumDepthIs+=1
-        levelIs = len(q)
-        for i in range(levelIs):
-            temp = q.popleft()
-            # The only difference will be, instead of keeping track of all the nodes in a level, we will only track
-            # the depth of the tree. As soon as we find our first leaf node, that level will represent the minimum
-            # depth of the tree.
-            if not temp.left and not temp.right:
-                return minimumDepthIs
-            if temp.left:
-                q.append(temp.left)
-            if temp.right:
-                q.append(temp.right)
+    queue = deque([(root,0)])
+    while queue :
+        node , currentLevel = queue.popleft()
+        if node.left is None and node.right is None:
+            return currentLevel
+        if node.left :
+            queue.append((node.left,currentLevel+1))
+        if node.right:
+            queue.append((node.right,currentLevel+1))
+
+
+
+# def depthOfTree(root):
+#     if root is None:
+#         return []
+#     minimumDepthIs = 0
+#     q = deque([root])
+#     while q:
+#         minimumDepthIs += 1
+#         levelIs = len(q)
+#         print(len(q))
+#         for i in range(levelIs):
+#             temp = q.popleft()
+#             # The only difference will be, instead of keeping track of all the nodes in a level, we will only track
+#             # the depth of the tree. As soon as we find our first leaf node, that level will represent the minimum
+#             # depth of the tree.
+#             if not temp.left and not temp.right:
+#                 return minimumDepthIs
+#             if temp.left:
+#                 q.append(temp.left)
+#             if temp.right:
+#                 q.append(temp.right)
+
+
 #
 # def depthOfTree(treeNode):
 #     isDepth = []
@@ -44,10 +61,10 @@ def depthOfTree(root):
 #     return isDepth
 
 
-
-
 treeNode = TreeNode(3)
 treeNode.left = TreeNode(9)
+treeNode.left.left = TreeNode(15)
+treeNode.left.right = TreeNode(7)
 treeNode.right = TreeNode(20)
 treeNode.right.left = TreeNode(15)
 treeNode.right.right = TreeNode(7)
