@@ -9,13 +9,10 @@ class TreeNode:
 
 
 def reverseTree(treeNode):
-    l = []
-
     if treeNode is None:
         return
     left = reverseTree(treeNode.left)
     right = reverseTree(treeNode.right)
-
     treeNode.left = right
     treeNode.right = left
     return treeNode
@@ -26,7 +23,6 @@ def print_tree_inorder(treeNode):
         print_tree_inorder(treeNode.left)
         print(treeNode.val, end=" ")  # Print the value
         print_tree_inorder(treeNode.right)
-
 
 treeNode = TreeNode(2)
 treeNode.left = TreeNode(1)
