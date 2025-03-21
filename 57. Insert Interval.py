@@ -4,17 +4,22 @@ newInterval = [2,3]
 i = 0
 currentIntervalsLength = len(intervals)
 result = []
+# Step1 = Since the intervals are sorted, we'll create an empty list,
+# output,and start adding the intervals that start before the new interval.
 while i < currentIntervalsLength and intervals[i][0] < newInterval[0]:
     result.append(intervals[i])
     i += 1
 
 print(result)
-
+# Next, we'll add the new interval to the output list and merge
+# it with the previously added interval if there is an overlap.
 if len(result) == 0 or result[-1][-1] < newInterval[0]:
     result.append(newInterval)
 else:
     result[-1][-1] = max(newInterval[-1], result[-1][-1])
 print(result)
+# Finally, we'll add the remaining intervals to the output list,
+# merging them with the previously added intervals when they overlap.
 while i < currentIntervalsLength:
     if result[-1][-1] < intervals[i][0]:
         result.append(intervals[i])

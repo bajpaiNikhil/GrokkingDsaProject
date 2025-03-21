@@ -5,19 +5,18 @@ digitsMapping = {
 }
 combinationList = []
 
-def backTrack(index, path, digits, digitsMapping, combinationList):
+def backtrackingOnPhoneNumbers(path , index , digits , digitMapping):
     if len(path) == len(digits):
         combinationList.append("".join(path))
         return
-    digit = int(digits[index])
-    for letter in digitsMapping[digit]:
+
+    individualDigit = int(digits[index])
+    for letter in digitsMapping[individualDigit]:
         path.append(letter)
-        backTrack(index + 1, path, digits, digitsMapping, combinationList)
+        backtrackingOnPhoneNumbers(path , index+1,digits,digitMapping)
         path.pop()
-
-backTrack(0, [], digits, digitsMapping, combinationList)
+backtrackingOnPhoneNumbers([],0,digits,digitsMapping)
 print(combinationList)
-
 # digits = "23"
 # digitsMapping = {
 #     1:"", 2: "abc",3:"def",4:"ghi",5:"jkl",6:"mno",7:"pqrs",8:"tuv",9:"wxyz"
@@ -37,3 +36,6 @@ print(combinationList)
 #
 # backTrack(0,"",digits,digitsMapping,combinationList)
 # print(combinationList)
+
+
+

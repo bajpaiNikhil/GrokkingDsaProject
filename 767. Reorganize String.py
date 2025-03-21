@@ -1,28 +1,49 @@
 import heapq
 
-s = "aaab"
-freqHashMap = {}
+s = "aab"
+frequencyHashMap = {}
 maxHeap = []
 for i in s:
-    freqHashMap[i] = freqHashMap.get(i,0)+1
-print(freqHashMap)
+    frequencyHashMap[i] = frequencyHashMap.get(i, 0) + 1
+print(frequencyHashMap)
+for key, val in frequencyHashMap.items():
+    heapq.heappush(maxHeap, (-val, key))
 
-for key,val in freqHashMap.items():
-    heapq.heappush(maxHeap,(-val,key))
-
-previousChar = None
 previousFrequency = 0
-print(freqHashMap,maxHeap)
+previousChar = None
 res = ""
 while maxHeap:
-    val , key = heapq.heappop(maxHeap)
-
-    if key and -previousFrequency>0:
-        heapq.heappush(maxHeap,(previousFrequency,previousChar))
-    res+=key
+    val, key = heapq.heappop(maxHeap)
+    print("123",val , key)
+    if previousChar and -previousFrequency > 0:
+        heapq.heappush(maxHeap, (previousFrequency, previousChar))
+    res += key
     previousChar = key
-    previousFrequency = val+1
+    previousFrequency = val + 1
 print(res)
+
+# freqHashMap = {}
+# maxHeap = []
+# for i in s:
+#     freqHashMap[i] = freqHashMap.get(i,0)+1
+# print(freqHashMap)
+#
+# for key,val in freqHashMap.items():
+#     heapq.heappush(maxHeap,(-val,key))
+#
+# previousChar = None
+# previousFrequency = 0
+# print(freqHashMap,maxHeap)
+# res = ""
+# while maxHeap:
+#     val , key = heapq.heappop(maxHeap)
+#     print(val,key)
+#     if previousChar and -previousFrequency>0:
+#         heapq.heappush(maxHeap,(previousFrequency,previousChar))
+#     res+=key
+#     previousChar = key
+#     previousFrequency = val+1
+# print(res)
 # heap = []
 # dic = {}
 # for i in s:

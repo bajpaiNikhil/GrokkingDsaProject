@@ -6,14 +6,14 @@ def swappedNums(nums, i, j):
 
 def findAllPermutation(nums, currentIndex, results):
     if currentIndex == len(nums) - 1:
+        print("results",results,nums[:],currentIndex)
         results.append(nums[:])
         return results
     for i in range(currentIndex, len(nums)):
         swapped = swappedNums(nums, currentIndex, i)
-        print(swapped)
+        print(swapped,nums,currentIndex,i)
         findAllPermutation(swapped, currentIndex + 1, results)
         swappedNums(nums, currentIndex, i)
-
 
 def permutationAre(nums):
     results = []

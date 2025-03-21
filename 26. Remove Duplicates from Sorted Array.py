@@ -1,13 +1,11 @@
 
-
-
-nums = [0,0,1,1,1,2,2,3,3,4]
+nums = [0 ,0 ,1 ,1 ,1 ,2 ,2 ,3 ,3 ,4]
 
 firstOccurrence = 1
 for i in range(len(nums)):
-    if nums[i] != nums[firstOccurrence-1]:
+    if nums[i] != nums[firstOccurrence - 1]:
         nums[firstOccurrence] = nums[i]
-        firstOccurrence+=1
+        firstOccurrence += 1
 print(nums)
 
 # nextDuplicate = 1
