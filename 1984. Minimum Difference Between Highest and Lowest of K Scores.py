@@ -3,11 +3,18 @@ import math
 nums = [9,4,1,7]
 k = 2
 nums.sort()
-min_diff = float('inf')
+min_dif = float('inf')
+print(nums)
 for i in range(len(nums)-k+1):
-    # print(i,nums[i+k-1],nums[i])
-    min_diff = min(min_diff,nums[i+k-1]-nums[i])
-print(min_diff)
+    print(i,nums[i],nums[i+k-1])
+    min_dif = min(min_dif,nums[i+k-1]-nums[i])
+print(min_dif)
+
+# min_diff = float('inf')
+# for i in range(len(nums)-k+1):
+#     # print(i,nums[i+k-1],nums[i])
+#     min_diff = min(min_diff,nums[i+k-1]-nums[i])
+# print(min_diff)
 # nums.sort()
 # # print(nums)
 # minVal = nums[k-1]-nums[0]

@@ -1,4 +1,4 @@
-n = 23
+n = 2
 
 slow = n
 fast = n
